@@ -57,7 +57,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
             <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span> 送出</button>
             <button type="reset" class="btn btn-success"><span class="glyphicon glyphicon-refresh"></span> 重製</button>
-            <button class="btn btn-warning"  href="{{ route('machine.index') }}"><span class="glyphicon glyphicon-log-out"></span> 返回</button>
+            <a class="btn btn-warning"  href="{{ route('machine.index') }}"><span class="glyphicon glyphicon-log-out"></span> 返回</a>
             <br><br>
         </div>
      </div>

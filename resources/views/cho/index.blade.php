@@ -14,7 +14,7 @@
     </style>
     <div class="row">
         <div class="col-md-12">
-            <h2><a onclick=history.back()><font color="gray">計畫管理 </font></a> <font size="5" color="gray"><span class="glyphicon glyphicon-menu-right"></span></font><font color="black">機器選單</font></h2>
+            <h2><a href="{{ route('project.index') }}"><font color="gray">計畫管理 </font></a> <font size="5" color="gray"><span class="glyphicon glyphicon-menu-right"></span></font><font color="black">機器選單</font></h2>
         </div>
     </div>
 

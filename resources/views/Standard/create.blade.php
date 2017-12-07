@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2><a onclick=history.back()> <font color="black">規範管理 </font></a> <font size="5"><span class="glyphicon glyphicon-menu-right"></span></font> 新增規範</h2>
+                <h2><a  href="{{ route('Standard.index') }}"> <font color="black">規範管理 </font></a> <font size="5"><span class="glyphicon glyphicon-menu-right"></span></font> 新增規範</h2>
             </div>
         </div>
     </div>
@@ -153,7 +153,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
             <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span> 送出</button>
             <button type="reset" class="btn btn-success"><span class="glyphicon glyphicon-refresh"></span> 重製</button>
-            <button class="btn btn-warning" onclick=history.back()><span class="glyphicon glyphicon-log-out"></span> 返回</button>
+            <a class="btn btn-warning" href="{{ route('Standard.index') }}"><span class="glyphicon glyphicon-log-out"></span> 返回</a>
             <br><br>
         </div>
 

@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2><a onclick=history.back()> 規範管理 </a><font size="5"><span class="glyphicon glyphicon-menu-right"></span></font> 編輯規範</h2>
+                <h2><a onclick=history.back()> <font color="#808080">規範管理 </font> </a><font size="5"><span class="glyphicon glyphicon-menu-right"></span></font> 編輯規範</h2>
             </div>
 
         </div>
@@ -33,7 +33,7 @@
 
 
     <?php
-    $serverName = "163.17.9.113\SQLEXPRESS";
+    $serverName = "163.17.9.113";
     $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
     $conn=sqlsrv_connect($serverName,$connectionInfo);
     $sql="select*from DB_Project where Standard_id=".$standard->Standard_id; //依Standard_id搜尋DB_Project資料表
@@ -51,9 +51,6 @@
         $query=sqlsrv_query($conn,$sql_Change);
     }
     ?>
-
-
-
     {!! Form::model($standard, ['method' => 'PATCH','route' => ['Standard.update', $standard->Standard_id]]) !!}
     <div class="row">
 
@@ -87,8 +84,6 @@
         <div class="col-xs-12 col-sm-12 col-md-4">
             <div class="form-group">
                 <strong>規範編號:</strong>
-                {{--<input type="text" class="'form-control" id="Standard_no" name="Standard_no" placeholder="規範編號" required>--}}
-                {{--<input type="text" class="form-control" id="Standard_no" name="Standard_no" value="Standard_no" placeholder="規範編號" required readonly>--}}
                 {!! Form::text('Standard_no', null, array('placeholder' => '規範編號','class' => 'form-control')) !!}
             </div>
         </div>
@@ -169,11 +164,10 @@
         <div class="col-xs-12 col-sm-12 col-md-4">
             <div class="form-group">
                 <strong>規範狀態:</strong>
-                <select name="Standard_Status" id="Standard_Status" class="form-control" readonly>
-                    <option  value="0">正常(0)</option>
+                <select name="Standard_Status" id="Standard_Status" class="form-control">
+                    <option  value="0">正常</option>
+                    <option  value="1">刪除</option>
                 </select>
-
-                {{--{!! Form::text('Standard_Status', null, array('placeholder' => '規範狀態','class' => 'form-control')) !!}--}}
             </div>
         </div>
 
@@ -181,7 +175,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
             <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span> 送出</button>
             <button type="reset" class="btn btn-success"><span class="glyphicon glyphicon-refresh"></span> 重製</button>
-            <button class="btn btn-warning" onclick=history.back()><span class="glyphicon glyphicon-log-out"></span> 返回</button>
+            <a class="btn btn-warning" href="{{ route('Standard.index') }}"><span class="glyphicon glyphicon-log-out"></span> 返回</a>
         </div>
 
     </div>

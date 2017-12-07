@@ -10,7 +10,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h2><a onclick=history.back()> <font color="black">機器管理 </font></a> <font size="5"><span class="glyphicon glyphicon-menu-right"></span></font> 細部內容 <font size="5"><span class="glyphicon glyphicon-menu-right"></span></font> {{$machines->Machine_id}}</h2>
+            <h2><a onclick=history.back()> <font color="black">機器管理 </font></a> <font size="5"><span class="glyphicon glyphicon-menu-right"></span></font>  {{$machines->Machine_name}}</h2>
         </div>
     </div>
     <br><br><br>

@@ -14,7 +14,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2><a onclick=history.back()><font color="gray">機器選單&nbsp;</font></a><font color="gray" size="5"><span class="glyphicon glyphicon-menu-right"></span></font><font color="black">&nbsp;新增機器選單</font></h2>
+                <h2><a a href="{{ route('project.index') }}"><font color="gray">機器選單&nbsp;</font></a><font color="gray" size="5"><span class="glyphicon glyphicon-menu-right"></span></font><font color="black">&nbsp;新增機器選單</font></h2>
             </div>
         </div>
     </div>

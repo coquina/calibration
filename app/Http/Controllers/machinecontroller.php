@@ -20,7 +20,7 @@ class machinecontroller extends Controller
             ->Where($tag_machine_2, 'like', '%' .$search_2. '%')
             ->Where('Status', 'like', '%' .$status. '%')
             ->Where('Instrument_sort', 'like', '%' .$Instrument. '%')
-            ->sortable('DESC')
+            ->sortable('Machine_id','ASC')
             ->paginate(10);
         return view('machine.index',compact('machines'))
             ->with('i', ($request->input('page', 1) - 1) * 5);

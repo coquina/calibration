@@ -10,7 +10,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h2><a onclick=history.back()> <font color="black">規範管理 </font></a> <font size="5"><span class="glyphicon glyphicon-menu-right"></span></font> 細部內容 <font size="5"><span class="glyphicon glyphicon-menu-right"></span></font> {{$standard->Standard_id}}</h2>
+            <h2><a onclick=history.back()> <font color="black">規範管理 </font></a> <font size="5"><span class="glyphicon glyphicon-menu-right"></span></font> 細部內容 <font size="5"><span class="glyphicon glyphicon-menu-right"></span></font> {{$standard->Standard_name}}</h2>
         </div>
     </div>
     <br><br><br>
@@ -69,8 +69,8 @@
     <div class="col-xs-12 col-sm-12 col-md-4">
         <div class="form-group">
             <strong>建立日期：</strong>
-            <input type="text" name="Create_time" class="form-control" value="<?php echo $standard->Create_time?>" readonly>
-            {{--{{ $standard->Create_time }}--}}
+            <input type="text" name="Create_time" class="form-control" value={{date('Y-m-d',strtotime($standard->Create_time))}} readonly>
+
         </div>
     </div>
 
@@ -133,8 +133,14 @@
     <div class="col-xs-12 col-sm-12 col-md-4">
         <div class="form-group">
             <strong>規範狀態：</strong>
-            <input type="text" name="Standard_Status" class="form-control" value="<?php echo $standard->Standard_Status?>" readonly>
-            {{--{{ $standard->Standard_Status }}--}}
+            <input type="text" name="Standard_Status" class="form-control" value="<?php
+            if($standard->Standard_Status==0){
+                echo "正常";
+            }else{
+                echo "刪除";
+            }?>" readonly>
+
+
         </div>
     </div>
 

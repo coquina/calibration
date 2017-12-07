@@ -83,32 +83,17 @@
                          <input type="text" name="search" class="form-control" placeholder="Search ....">
                         <span class="input-group-btn">
                             <button type="submit" class="btn btn-default-sm">
-                                <i class="fa fa-search">Go</i>
+                                <i class="fa fa-search"></i>
                             </button>
                         </span>
                         </p>
-                        {{--<p>--}}
-
-                            {{--<select name="Standard" id="Standard" class="form-control">--}}
-                                {{--<option  value=""></option>--}}
-                                {{--<option  value="Create_time">建立日期</option>--}}
-                            {{--</select>--}}
-                            {{--<input type="date" name="search" value="Create_time" class="form-control" placeholder="Search ....">--}}
-                            {{--<button type="submit" class="btn btn-default-sm">--}}
-                                {{--<i class="fa fa-search">Go</i>--}}
-                            {{--</button>--}}
-                        {{--</p>--}}
                     {!! Form::close() !!}
 
                     </div>
                 </div>
-
-
                 <div class="pull-right">
                     <a class="btn btn-success" href="{{ route('Standard.create') }}"><span class="glyphicon glyphicon-plus"></span> 新增規範</a>
                 </div>
-
-            {{--</div>--}}
         </div>
     </div>
 
@@ -120,25 +105,6 @@
 
     <table class="table table-hover" name="standard_table" id="standard_table">
         <tr>
-            {{--<th>NO</th>--}}
-            {{--<th>規範流水號</th>--}}
-            {{--<th><font color="f0f8ff">規範編號</font></th>--}}
-            {{--<th><font color="f0f8ff">規範名稱</font></th>--}}
-            {{--<th><font color="f0f8ff">建立者</font></th>--}}
-            {{--<th>建立日期</th>--}}
-            {{--<th>原始文件規範檔名</th>--}}
-            {{--<th>系統文件規範編碼</th><th>建立日期</th>--}}
-            {{--<th>原始文件規範檔名</th>--}}
-            {{--<th>系統文件規範編碼</th>--}}
-            {{--<th><font color="f0f8ff">建議週期(月)</font></th>--}}
-            {{--<th>規範所屬單位</th>--}}
-            {{--<th>發行單位</th>--}}
-            {{--<th>引用出處</th>--}}
-            {{--<th><font color="f0f8ff">版次</font></th>--}}
-            {{--<th>規範狀態</th>--}}
-            {{--<th><font color="f0f8ff">編輯</font></th>--}}
-
-
             <th width="30"><CENTER><font color="f0f8ff">@sortablelink('Standard_no','規範編號')</font></CENTER></th>
             <th width="60"><CENTER><font color="f0f8ff">@sortablelink('Standard_name','規範名稱')</font></CENTER></th>
             <th width="30"><CENTER><font color="f0f8ff">@sortablelink('Create_id','建立者')</font></CENTER></th>
@@ -146,19 +112,15 @@
             <th width="30"><CENTER><font color="f0f8ff">@sortablelink('Version','版次')</font></CENTER></th>
             <th width="100"><CENTER><font color="f0f8ff">功能</font></CENTER></th>
 
-
+            {{ csrf_field() }}
         </tr>
         @foreach ($standard as $key => $DB_Standard)
             <tr><center>
-                {{--<td>{{ ++$i }}</td>--}}
-                {{--<td>{{$DB_Standard->Standard_id}}</td>--}}
                     <td><center>{{$DB_Standard->Standard_no}}</center></td>
                     <td><center>{{$DB_Standard->Standard_name}}</center></td>
-                {{--<td>{{$DB_Standard->Create_id}}</td>--}}
-
                 <td><center>
                 <?php
-                $serverName = "163.17.9.113\SQLEXPRESS";
+                $serverName = "163.17.9.113";
                 $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
                 $conn = sqlsrv_connect( $serverName, $connectionInfo);
                 $sql="select Member_name from DB_Member where id=".$DB_Standard->Create_id;
@@ -168,33 +130,18 @@
                     echo $row[0];
                 }
                 ?></center></td>
-
-                {{--<td>{{$DB_Standard->Create_time}}</td>--}}
-                {{--<td>{{$DB_Standard->File_norm}}</td>--}}
-                {{--<td>{{$DB_Standard->File_norm_code}}</td>--}}
                 <td><center>{{$DB_Standard->Cycle_R}}</center></td>
-                {{--<td>{{$DB_Standard->S_Department}}</td>--}}
-                {{--<td>{{$DB_Standard->Issuse_Department}}</td>--}}
-                {{--<td>{{$DB_Standard->Citation}}</td>--}}
                 <td><center>{{$DB_Standard->Version}}</center></td>
-                {{--<td>{{$DB_Standard->Standard_Status}}</td>--}}
                 <td><center>
                     <a  href="{{ route('Standard.show',$DB_Standard->Standard_id) }}"  title="顯示"><span class="glyphicon glyphicon-list-alt"  style="color:#337ab7"></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    {{--<a class="btn btn-info" href="{{ route('Standard.show',$DB_Standard->Standard_id) }}">顯示</a>--}}
-
                     <a  href="{{ route('Standard.edit',$DB_Standard->Standard_id) }}"  title="編輯"><span class="glyphicon glyphicon-pencil"  style="color:#337ab7"></span></a>
-                    {{--<a class="btn btn-primary" href="{{ route('Standard.edit',$DB_Standard->Standard_id) }}">編輯</a>--}}
-
                     {!! Form::open(['method' => 'DELETE','route' => ['Standard.destroy', $DB_Standard->Standard_id],'style'=>'display:inline','title'=>'刪除']) !!}
                     <button type="submit" class="btn btn-link"><span class="glyphicon glyphicon-trash"></span></button>
-
-                    {{--{!! Form::open(['method' => 'DELETE','route' => ['Standard.destroy', $DB_Standard->Standard_id],'style'=>'display:inline']) !!}--}}
-                    {{--{!! Form::submit('刪除', ['class' => 'btn btn-danger']) !!}--}}
-                    {{--<a class="btn btn-warning" href="{{ route('VersionChange.index',$DB_Standard->Standard_id) }}">歷史版次</a>--}}
                     <a  href="VersionChange?history_no=<?php echo $DB_Standard->Standard_no;?>"  title="歷史版次"><span class="glyphicon glyphicon-file"  style="color:#337ab7"></span></a>
                     {!! Form::close() !!}
                     </center></td>
-                </tr>
+                </center>
+            </tr>
         @endforeach
     </table>
 

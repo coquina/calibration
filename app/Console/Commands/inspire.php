@@ -37,8 +37,7 @@ class inspire extends Command
      */
     public function handle()
     {
-        \Log::info('I was  here @'.\Carbon\Carbon::now());
-    //*******************************************************************************排程程式*******************************************************************************
+        \Log::info('*****排程管理開始*****');
         $serverName = "163.17.9.113";
         $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
         $conn = sqlsrv_connect( $serverName, $connectionInfo);
@@ -67,7 +66,6 @@ where a.Machine_list_id=b.Machine_list_id and b.Project_id=c.Project_id and c.St
                     $query=sqlsrv_query($conn,$sql_create_sc_o);                     //依以上資料產生新排程，並寫入 DB_Schedule 資料表
                     $sql_fix_status="UPDATE DB_Schedule SET Check_key = 1 WHERE Schedule_id=".$row[8];
                     $query=sqlsrv_query($conn,$sql_fix_status);
-                    //echo $sql_create_sc_o."<br>";
                 }else{
                     $years=date_format($row[1], 'Y');
                     $months=date_format($row[1], 'm');
@@ -77,16 +75,14 @@ where a.Machine_list_id=b.Machine_list_id and b.Project_id=c.Project_id and c.St
                     $query=sqlsrv_query($conn,$sql_create_sc_o);                     //依以上資料產生新排程，並寫入 DB_Schedule 資料表
                     $sql_fix_status="UPDATE DB_Schedule SET Check_key = 1 WHERE Schedule_id=".$row[8];
                     $query=sqlsrv_query($conn,$sql_fix_status);
-                    //echo $sql_create_sc_o."<br>";
                 }
             }elseif($row[3]==9 and $row[6]==0){
                 $sql_mod_s="UPDATE DB_Machine SET Status = 0 WHERE Machine_id =".$row[7];
                 $query=sqlsrv_query($conn,$sql_mod_s);                     //將 Test_result_status 為【異常(9)】之機器狀態更改為 維修(0)
                 $sql_fix_status="UPDATE DB_Schedule SET Check_key = 1 WHERE Schedule_id=".$row[8];
                 $query=sqlsrv_query($conn,$sql_fix_status);
-                //echo $sql_mod_s."<br>";
             }
         }
-    //*******************************************************************************排程程式*******************************************************************************
+        \Log::info('*****排程管理結束*****');
     }
 }

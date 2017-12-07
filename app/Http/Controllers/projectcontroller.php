@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class projectcontroller extends Controller
 {
     public function index(Request $request){
-        $sort = \Request::get('sort','Project_id');
+        $sort = \Request::get('sort','Create_time');
         $search = \Request::get('search');
         $tag_project = \Request::get('tag_project','Project_id');
         if($tag_project=='Standard_name'){
@@ -27,7 +27,6 @@ class projectcontroller extends Controller
             $search=$array[$x];
             $tag_project='Standard_id';
         }
-//        $projects=project::where($tag_project,'like','%'.$search.'%')->orderBy($sort,'DESC')->paginate(10);
         $projects=project::where($tag_project,'like','%'.$search.'%')->sortable($sort,'DESC')->paginate(10);
         return view('project.index',compact('projects'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
