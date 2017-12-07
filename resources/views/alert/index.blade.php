@@ -89,10 +89,10 @@
         <div class="table-responsive">
             <table class="table table-borderless" id="table_alert" name="table_alert">
                 <tr>
-                    <th><CENTER><font color="f0f8ff">編號</font></CENTER></th>
-                    <th><CENTER><font color="f0f8ff">@sortablelink('Machine_list_id','機器選單編號')</font></CENTER></th>
+                    {{--<th><CENTER><font color="f0f8ff">編號</font></CENTER></th>--}}
+                    <th><CENTER><font color="f0f8ff">@sortablelink('Schedule_id','排程編號')</font></CENTER></th>
                     {{--@sortablelink('Machine_name','')--}}
-                    <th><CENTER><font color="f0f8ff"><a href="alert?sort=Machine_name">機器名稱</a></font></CENTER></th>
+                    <th><CENTER><font color="f0f8ff"><a href="alert?sort=Machine_name">@sortablelink('Schedule_id','機器名稱')</a></font></CENTER></th>
                     <th><CENTER><font color="f0f8ff">今日日期</font></CENTER></th>
                     <th><CENTER><font color="f0f8ff">@sortablelink('Next_calibration_date','到期日期')</font></CENTER></th>
                     <th><CENTER><font color="f0f8ff">狀態</font></CENTER></th>
@@ -101,13 +101,13 @@
 
                 @foreach($alerts as $key=>$alert)
 
-                        <td id="number"><CENTER>{{ ++$i }}</CENTER></td>
-                        {{--<td>{{$alert->Schedule_id}}</td>--}}
-                        <td><CENTER>{{$alert->Machine_list_id}}</CENTER></td>
+                        {{--<td id="number"><CENTER>{{ ++$i }}</CENTER></td>--}}
+                        <td><center>{{$alert->Schedule_id}}</center></td>
+                        {{--<td><CENTER>{{$alert->Machine_list_id}}</CENTER></td>--}}
 
                         <?php
 
-                                $serverName = "163.17.9.113\SQLEXPRESS";
+                                $serverName = "163.17.9.113";
                                 $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
                                 $conn = sqlsrv_connect( $serverName, $connectionInfo);
                                 $sql_list="select Machine_id from DB_Machinelist where Machine_list_id=".$alert->Machine_list_id;
@@ -134,11 +134,11 @@
                         <td id="status"><CENTER>
                         <?php
                                 if($mytime==date('Y-m-d',strtotime($alert->Next_calibration_date))){
-                                    echo '<span style="color:yellow;">已到</span>';
+                                    echo '<span style="color:orange;"><font size="3px"> <b>到期</b></font></span>';
                                 }elseif($mytime>date('Y-m-d',strtotime($alert->Next_calibration_date))){
-                                    echo'<span style="color:red;">過期</span>';
+                                    echo'<span style="color:red;"><font size="3px"><b>過期</b></font></span>';
                                 }else{
-                                    echo'<span style="color:black;">未到</span>';
+                                    echo'<span style="color:black;"><font size="3px"><b>未到</b></font></span>';
                                 }
                             ?>
                             </CENTER></td>

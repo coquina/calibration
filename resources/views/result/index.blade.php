@@ -19,44 +19,21 @@
         <h1><a href="{{ route('result.index') }}">結果管理</a></h1>
     </div>
     </div>
-
-
-    {{--這是搜尋--}}
     <div class="col-md-12">
         <div class="input-group custom-search-form">
             {!! Form::open(['method'=>'GET','url'=>'result','class'=>'navbar-form navbar-left','role'=>'search']) !!}
-            {{--<select name="tag_result_1" class="form-control">--}}
-                {{--<option  value="Machine_No">機器編號</option>--}}
-                {{--<option  value="Machine_name">機器名稱</option>--}}
-                {{--<option  value="Status">狀態</option>--}}
-                {{--<option  value="Instrument_sort">儀器分類</option>--}}
-                {{--<option  value="Purchasing_department">採購部門</option>--}}
-            {{--</select>--}}
-            {{--<input type="text" name="tag_result_2" class="form-control"  size="15">--}}
-            {{--<select name="tag_machine_2" id="tag_machine_2" class="form-control">--}}
-                {{--<option  value="Machine_No">機器編號</option>--}}
-                {{--<option  value="Machine_name">機器名稱</option>--}}
-                {{--<option  value="Status">狀態</option>--}}
-                {{--<option  value="Instrument_sort">儀器分類</option>--}}
-                {{--<option  value="Purchasing_department">採購部門</option>--}}
-            {{--</select>--}}
             <input type="text" name="search_1" class="form-control" placeholder="排程編號" size="15">
             <button type="submit" class="form-control"><span class="glyphicon glyphicon-search"></span></button>
         </div>
     </div>
     {!! Form::close() !!}
-    {{--這是搜尋--}}
 
-    {{--Button--}}
     <div class="form-group row add">
         <div class="pull-right">
             <a class="btn btn-success" href="{{ route('result.create') }}"><span class="glyphicon glyphicon-plus"></span> 新增結果</a>
         </div>
     </div>
-    {{--Button--}}
-
-
-        @if ($message = Session::get('success'))
+      @if ($message = Session::get('success'))
             <div class="alert alert-success">
                 <p>{{ $message }}</p>
             </div>

@@ -153,7 +153,7 @@ order by b.Machine_id";
   while($row=sqlsrv_fetch_array($result)){
       for($i=0;$i<$x;$i++){
           if($array_mchine[$i][0]==$row[0]){
-              $array_mchine[$i][6]+=1;
+              $array_mchine[$i][6]++;
           }
       }
   }

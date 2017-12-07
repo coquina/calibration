@@ -19,7 +19,7 @@ class schedulecontroller extends Controller
     {
         $bookdate_1 = \Request::get('bookdate_1');
         $bookdate_2 = \Request::get('bookdate_2');
-        $sort = \Request::get('sort','Schedule_id');
+        $sort = \Request::get('sort','Test_result_status');
         $search_sch_1 = \Request::get('search_sch_1');
         $search_sch_2 = \Request::get('search_sch_2');
 
@@ -92,7 +92,7 @@ class schedulecontroller extends Controller
                 ;
         }else {
             $this->validate($request, [
-                'Suggested_date' => 'required',
+//                'Suggested_date' => 'required',
                 'Test_result_status' => 'required',
                 'TestResult_raw_file' => 'required',
                 'Applicant' => 'required',

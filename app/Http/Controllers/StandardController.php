@@ -129,8 +129,20 @@ class StandardController extends Controller
      */
     public function destroy($Standard_id)
     {
-        Standard::find($Standard_id)->delete();
-        return redirect()->route('Standard.index')
-            ->with('success','刪除成功');
+        $serverName = "163.17.9.113";
+        $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
+        $conn = sqlsrv_connect( $serverName, $connectionInfo);
+        $sql="select Standard_id from DB_Standard where Standard_id=".$Standard_id;
+        $result=sqlsrv_query($conn,$sql)or die("sql error".sqlsrv_errors());
+        while($row=sqlsrv_fetch_array($result)){
+            if($row[0]!=null){
+                return redirect()->route('Standard.index')
+                    ->with('success','已進入排程 無法刪除');
+            }else{
+                Standard::find($Standard_id)->delete();
+                return redirect()->route('Standard.index')
+                    ->with('success','刪除成功');
+            }
+        }
     }
 }

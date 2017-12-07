@@ -89,7 +89,7 @@
                 <tr>
                     <th width="30"><CENTER><font color="#f0f8ff">@sortablelink('Schedule_id','No')</font></CENTER></th>
                     {{--<th width="60"><CENTER><font color="#f0f8ff">@sortablelink('Machine_list_id','機器選單編號')</font></CENTER></th>--}}
-                    <th width="50"><a href="schedule"><CENTER><font color="#f0f8ff">機器名稱</font></CENTER></a></th>
+                    <th width="50"><a href="schedule"><CENTER><font color="#f0f8ff">@sortablelink('Schedule_id','機器名稱')</font></CENTER></a></th>
                     <th width="50"><CENTER><font color="#f0f8ff">@sortablelink('Correction_company','機器廠商')</font></CENTER></th>
                     <th width="50"><CENTER><font color="#f0f8ff">@sortablelink('Next_calibration_date','下次校驗日期')</font></CENTER></th>
                     <th width="50"><CENTER><font color="#f0f8ff">@sortablelink('Test_result_status','校驗狀態')</font></CENTER></th>
@@ -99,7 +99,6 @@
                 @foreach($schedules as $key=>$schedule)
                     <tr>
                         <td><CENTER>{{$schedule->Schedule_id}}</CENTER></td>
-                        {{--<td><CENTER>{{$schedule->Machine_list_id}}</CENTER></td>--}}
                         <td><CENTER><?php
                                 $serverName = "163.17.9.113";
                                 $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
@@ -117,7 +116,11 @@
                                     $array_find_mach[0]=$row[3];       //依 DB_Machine 資料表取得 Machine_name
                                 }echo $array_find_mach[0]; ?></CENTER></td>
 
-                        <td><CENTER>{{$schedule->Correction_company}}</CENTER></td>
+                        <td><CENTER><?php if($schedule->Correction_company==null){
+                            echo "<font color='gray'>無紀錄</font>";
+                                }else{
+                            echo $schedule->Correction_company;
+                                } ?></CENTER></td>
                         <td><CENTER>{{date('Y-m-d',strtotime($schedule->Next_calibration_date))}}</CENTER></td>
                         <td><CENTER><?php if($schedule->Test_result_status==0){
                                    echo "未處理";

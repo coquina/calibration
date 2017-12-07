@@ -159,7 +159,7 @@ where a.Machine_list_id=b.Machine_list_id and c.Project_id=a.Project_id and c.Ch
         }
         $m_count_sql="select count(b.Next_calibration_date)
 from DB_Machinelist a,DB_Schedule b
-where a.Machine_list_id=b.Machine_list_id and b.Next_calibration_date>GETDATE()";
+where a.Machine_list_id=b.Machine_list_id and b.Next_calibration_date<GETDATE() and b.Test_result_status=0";
         $result=sqlsrv_query($conn,$m_count_sql)or die("sql error".sqlsrv_errors());
         while($row=sqlsrv_fetch_array($result)){
             $array_m_count_sch[15]=$row[0];     //  逾期未校
@@ -175,7 +175,7 @@ where a.Machine_list_id=b.Machine_list_id and b.Next_calibration_date>GETDATE()"
             ->labels(['ALL']);
 
         $chart_corr=Charts::create('donut','chartjs')
-            ->title('校 正')
+            ->title('校 正 管 理')
             ->labels(['內校','外校','逾期未校'])
             ->values([$array_m_count_sch[11],$array_m_count_sch[12],$array_m_count_sch[15]])
             ->colors(['#99FF99','#CCBBFF','#FFA488'])

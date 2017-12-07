@@ -148,7 +148,12 @@ order by b.Machine_id";
                         </CENTER></td>
                         <td><CENTER>{{$project->Check_method}}</CENTER></td>
                         <td><CENTER>{{$project->Cycle}}</CENTER></td>
-                        <td><CENTER>{{$project->Create_id}}</CENTER></td>
+                        <td><CENTER><?php
+                                $sql="select Member_name from DB_Member where id=".$project->Create_id;
+                                $result=sqlsrv_query($conn,$sql)or die("sql error".sqlsrv_errors());
+                                while($row=sqlsrv_fetch_array($result)){
+                                    echo $row[0];
+                                }?></CENTER></td>
                         <td><CENTER>{{date('Y-m-d',strtotime($project->Create_time))}}</CENTER></td>
                         <td>
                             <CENTER>

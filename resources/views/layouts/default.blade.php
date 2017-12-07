@@ -99,11 +99,9 @@ order by c.Main_function_name";
                 }
             }
             ?>
-            <li class="dropdown">
-                <a href="{{route('Parameter.index')}}"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;<font size="4">設 定</font></a>
-            </li>
-
-
+            {{--<li class="dropdown">--}}
+                {{--<a href="{{route('Parameter.index')}}"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;<font size="4">設 定</font></a>--}}
+            {{--</li>--}}
         </ul>
     </nav>
     <!-- /#sidebar-wrapper -->

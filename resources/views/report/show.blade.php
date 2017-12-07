@@ -21,7 +21,7 @@
     </style>
     <div class="row">
         <div class="col-md-20">
-            <h1><font color="gray">機器生命週期</font></h1>
+            <h2><a href="{{ route('report.index') }}"><font color="gray">報表管理&nbsp;</font></a><font color="gray" size="5"><span class="glyphicon glyphicon-menu-right"></span></font><font color="black">&nbsp;機器生命週期</font></h2>
             <hr>
         </div>
     </div>

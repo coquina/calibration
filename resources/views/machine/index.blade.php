@@ -83,21 +83,18 @@ $conn = sqlsrv_connect( $serverName, $connectionInfo);
         <div class="table-responsive">
             <table class="table table-borderless" id="machine_tb" name="machine_tb" >
                 <tr>
-                    {{--<th width="10"><CENTER><font color="#f0f8ff">@sortablelink('Machine_id','No').</font></CENTER></th>--}}
-                    <th width="20"><a href="machine?sort=id"><CENTER><font color="#f0f8ff">機器編號</font></CENTER></a></th>
-                    <th width="30"><CENTER><font color="#f0f8ff">@sortablelink('Machine_No','機器名稱')</font></CENTER></th>
+                    <th width="20"><CENTER><font color="#f0f8ff">@sortablelink('Machine_No','機器編號')</font></CENTER></th>
+                    <th width="30"><CENTER><font color="#f0f8ff">@sortablelink('Machine_name','機器名稱')</font></CENTER></th>
                     <th width="40"><CENTER><font color="#f0f8ff">@sortablelink('Machine_name','採購人')</font></CENTER></th>
                     <th width="60"><CENTER><font color="#f0f8ff">@sortablelink('Purchase_date','採購日期')</font></CENTER></th>
-                    <th width="60"><CENTER><font color="#f0f8ff">@sortablelink('Status','儀器分類')</font></CENTER></th>
-                    {{--<th width="70"><CENTER><font color="#f0f8ff">@sortablelink('Service_life','使用年限')</font></CENTER></th>--}}
-                    <th width="50"><CENTER><font color="#f0f8ff">@sortablelink('Instrument_sort','機器價格')</font></CENTER></th>
-                    <th width="40"><CENTER><font color="#f0f8ff">@sortablelink('Machine_prices','狀態')</font></CENTER></th>
+                    <th width="60"><CENTER><font color="#f0f8ff">@sortablelink('Instrument_sort','儀器分類')</font></CENTER></th>
+                    <th width="50"><CENTER><font color="#f0f8ff">@sortablelink('Machine_prices','機器價格')</font></CENTER></th>
+                    <th width="40"><CENTER><font color="#f0f8ff">@sortablelink('Status','狀態')</font></CENTER></th>
                     <th width="100"><CENTER><font color="#f0f8ff">功 能</font></CENTER></th>
                 </tr>
                 {{ csrf_field() }}
                 @foreach($machines as $key=>$machine)
                     <tr>
-                        {{--<td><CENTER>{{$machine->Machine_id}}</CENTER></td>--}}
                         <td><CENTER>{{$machine->Machine_No}}</CENTER></td>
                         <td><CENTER>{{$machine->Machine_name}}</CENTER></td>
                         <td><CENTER>

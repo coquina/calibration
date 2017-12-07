@@ -45,7 +45,7 @@
     <div class="col-xs-12 col-sm-12 col-md-4">
         <div class="form-group">
             <strong><font color="#FF0000">* </font>計畫名稱:</strong>
-            {!! Form::text('Project_name', null, array('placeholder' => '機器名稱','class' => 'form-control')) !!}
+            {!! Form::text('Project_name', null, array('placeholder' => '計畫名稱','class' => 'form-control')) !!}
         </div>
     </div>
           <br><br><br><br>
@@ -77,7 +77,7 @@
     <div class="col-xs-12 col-sm-12 col-md-4">
             <div class="form-group">
                 <strong><font color="#FF0000">* </font>週期:</strong>
-                <input type="number" name="Cycle" id="Cycle" min="1" max="20" class="form-control" placeholder="週期 (1~20)">
+                <input type="number" name="Cycle" id="Cycle" min="1" max="20" class="form-control" placeholder="週期 (1~20)" readonly>
             </div>
         </div>
     <input type="hidden" name="Create_id" class="form-control" value="<?php echo Auth::user()->id?>" readonly>
