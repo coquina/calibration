@@ -6,7 +6,12 @@
             color:#d4d4d4
         }
     </style>
-
+    <?php
+    use Illuminate\Support\Facades\Auth;
+    $serverName = "calibration.database.windows.net";
+    $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo);
+    ?>
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -45,9 +50,6 @@
             <div class="form-group">
                 <strong>機器流水號:</strong>
                 <?php
-                $serverName = "163.17.9.113\SQLEXPRESS";
-                $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
-                $conn = sqlsrv_connect( $serverName, $connectionInfo);
                 $sql="select * from DB_Machine where  Machine_name ='".$_GET['m_id']."'" ;
                 $result=sqlsrv_query($conn,$sql)or die("sql error".sqlsrv_errors());
                 while($row=sqlsrv_fetch_array($result)){

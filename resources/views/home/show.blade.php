@@ -39,8 +39,9 @@
                     <th  width="100"><center><font color="white">狀態</font></center></th>
                 </tr>
                 <?php
-                $serverName = "163.17.9.113";
-                $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
+                use Illuminate\Support\Facades\Auth;
+                $serverName = "calibration.database.windows.net";
+                $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
                 $conn = sqlsrv_connect( $serverName, $connectionInfo);
                 if(($_GET['search'] == '內校') or ($_GET['search']=='外校')){
                     $sql="select a.Machine_No,c.Project_name,a.Machine_name,d.Next_calibration_date,c.Check_method,c.Cycle,d.Test_result_status

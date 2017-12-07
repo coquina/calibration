@@ -6,7 +6,12 @@
         color:#d4d4d4
     }
 </style>
-
+<?php
+use Illuminate\Support\Facades\Auth;
+$serverName = "calibration.database.windows.net";
+$connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
+$conn = sqlsrv_connect( $serverName, $connectionInfo);
+?>
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -36,9 +41,6 @@
                 <strong ><font color="#FF0000">* </font>建立者:</strong>
                 <select name="id" id="id" class="form-control" >
                     <?php
-                    $serverName = "163.17.9.113\SQLEXPRESS";
-                    $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
-                    $conn = sqlsrv_connect( $serverName, $connectionInfo);
                     $sql="select*from DB_Member";
                     $result=sqlsrv_query($conn,$sql)or die("sql error".sqlsrv_errors());
                     $x=0;	$array[][]=0;$n=0;

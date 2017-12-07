@@ -184,8 +184,8 @@ class MemberController extends Controller
      */
     public function destroy($id)
     {
-        $serverName = "163.17.9.113\SQLEXPRESS";
-        $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
+        $serverName = "calibration.database.windows.net";
+        $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
         $conn = sqlsrv_connect( $serverName, $connectionInfo);
         $sql_p="select*from DB_Group_personnel where id=".$id;
         $result=sqlsrv_query($conn,$sql_p)or die("sql error".sqlsrv_errors());

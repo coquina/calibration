@@ -7,7 +7,12 @@
         }
     </style>
 
-
+    <?php
+    use Illuminate\Support\Facades\Auth;
+    $serverName = "calibration.database.windows.net";
+    $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo);
+    ?>
     <div class="row">
         <div class="col-md-12">
             <h2><a onclick=history.back()> <font color="black">機器管理 </font></a> <font size="5"><span class="glyphicon glyphicon-menu-right"></span></font>  {{$machines->Machine_name}}</h2>
@@ -21,9 +26,6 @@
         <div class="form-group">
             <strong>帳號:</strong>
             <input type="text" name="id" class="form-control" value="<?php
-            $serverName = "163.17.9.113";
-            $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
-            $conn = sqlsrv_connect( $serverName, $connectionInfo);
             $sql_m="select Member_name from DB_Member where id=".$machines->id;
             $result=sqlsrv_query($conn,$sql_m)or die("sql error".sqlsrv_errors());
             while($row=sqlsrv_fetch_array($result)){

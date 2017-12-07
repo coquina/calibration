@@ -1,6 +1,11 @@
 @extends('layouts.default')
-
 @section('content')
+    <?php
+    use Illuminate\Support\Facades\Auth;
+    $serverName = "calibration.database.windows.net";
+    $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo);
+    ?>
     <style>
         table#group_u tr:nth-child(even) {
             background-color: #eee;
@@ -111,9 +116,6 @@
                 <td><CENTER>{{$g->Group_No}}</CENTER></td>
                 <td><CENTER>{{$g->Group_name}}</CENTER></td>
                 <?php
-                $serverName = "163.17.9.113\SQLEXPRESS";
-                $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
-                $conn = sqlsrv_connect( $serverName, $connectionInfo);
                 $sql="select Member_name from DB_Member where id=".$g->Create_id;
                 $result=sqlsrv_query($conn,$sql)or die("sql error".sqlsrv_errors());
                 $array[]=0;

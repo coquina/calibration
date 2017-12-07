@@ -1,6 +1,11 @@
 @extends('layouts.default')
-
 @section('content')
+    <?php
+    use Illuminate\Support\Facades\Auth;
+    $serverName = "calibration.database.windows.net";
+    $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo);
+    ?>
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -37,9 +42,6 @@
                 <select name="Group_id" id="Group_id" class="form-control">
                     <option  value=<?php echo $pe->Group_id?>><?php echo $pe->Group_id?> </option>
                     <?php
-                    $serverName = "163.17.9.113\SQLEXPRESS";
-                    $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
-                    $conn = sqlsrv_connect( $serverName, $connectionInfo);
                     $sql="select*from DB_Group";
                     $result=sqlsrv_query($conn,$sql)or die("sql error".sqlsrv_errors());
                     $x=0;	$array[][]=0;

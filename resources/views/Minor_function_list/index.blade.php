@@ -21,6 +21,12 @@
             color:#ffffff;
         }
     </style>
+    <?php
+    use Illuminate\Support\Facades\Auth;
+    $serverName = "calibration.database.windows.net";
+    $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo);
+    ?>
 
     <div class="row">
         <div class="col-lg-12 margin-tb">
@@ -36,9 +42,6 @@
 
                                     <center><font color="#FFAC12" size="5"><b>
                                         主功能名稱: <?php
-                                        $serverName = "163.17.9.113\SQLEXPRESS";
-                                        $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
-                                        $conn = sqlsrv_connect( $serverName, $connectionInfo);
                                         $sql="select Main_function_name from DB_Main_function_list where Main_function_id=".$_GET['find_main_id'];
                                         $result=sqlsrv_query($conn,$sql)or die("sql error".sqlsrv_errors());
                                         $array[]=0;

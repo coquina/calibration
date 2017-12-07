@@ -38,8 +38,8 @@ class inspire extends Command
     public function handle()
     {
         \Log::info('*****排程管理開始*****');
-        $serverName = "163.17.9.113";
-        $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
+        $serverName = "calibration.database.windows.net";
+        $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
         $conn = sqlsrv_connect( $serverName, $connectionInfo);
         $sql="select a.Machine_list_id,c.Purchase_date,b.Cycle,d.Version
 from DB_Machinelist a,DB_Project b,DB_Machine c,DB_Standard d

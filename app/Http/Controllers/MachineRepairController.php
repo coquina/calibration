@@ -83,8 +83,8 @@ class MachineRepairController extends Controller
         MachineRepair::create($request->all());
 
 
-$serverName = "163.17.9.113\SQLEXPRESS";
-$connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
+        $serverName = "calibration.database.windows.net";
+        $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
 $conn = sqlsrv_connect( $serverName, $connectionInfo);
 if($_POST['MachineRepair_status'] == 0) {
     $sql = "UPDATE DB_Machine set Status=1 WHERE Machine_id=".$_POST['Machine_id'];

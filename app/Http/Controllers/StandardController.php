@@ -129,8 +129,8 @@ class StandardController extends Controller
      */
     public function destroy($Standard_id)
     {
-        $serverName = "163.17.9.113";
-        $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
+        $serverName = "calibration.database.windows.net";
+        $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
         $conn = sqlsrv_connect( $serverName, $connectionInfo);
         $sql="select Standard_id from DB_Standard where Standard_id=".$Standard_id;
         $result=sqlsrv_query($conn,$sql)or die("sql error".sqlsrv_errors());

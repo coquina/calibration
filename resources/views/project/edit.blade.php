@@ -6,6 +6,12 @@
             color:#d4d4d4
         }
     </style>
+    <?php
+    use Illuminate\Support\Facades\Auth;
+    $serverName = "calibration.database.windows.net";
+    $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo);
+    ?>
 
     <div class="row">
         <div class="col-lg-12 margin-tb">
@@ -62,9 +68,6 @@
             <div class="form-group">
                 <strong>規範:</Strong>
                 <input class="form-control" type="input" name="Standard_id" value=<?php
-                $serverName = "163.17.9.113";
-                $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
-                $conn = sqlsrv_connect( $serverName, $connectionInfo);
                 $sql1="select Standard_name from DB_Standard WHERE Standard_id=".$projects->Standard_id;
                 $result=sqlsrv_query($conn,$sql1)or die("sql error".sqlsrv_errors());
                 while($row=sqlsrv_fetch_array($result)){

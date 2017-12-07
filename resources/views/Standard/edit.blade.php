@@ -1,7 +1,12 @@
 @extends('layouts.default')
 
 @section('content')
-
+    <?php
+    use Illuminate\Support\Facades\Auth;
+    $serverName = "calibration.database.windows.net";
+    $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo);
+    ?>
     <style>
         hr {
             border:0; height:2px; background-color:#FFAC12;
@@ -33,9 +38,6 @@
 
 
     <?php
-    $serverName = "163.17.9.113";
-    $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
-    $conn=sqlsrv_connect($serverName,$connectionInfo);
     $sql="select*from DB_Project where Standard_id=".$standard->Standard_id; //依Standard_id搜尋DB_Project資料表
     $result=sqlsrv_query($conn,$sql)or die("sql error".sqlsrv_errors());
     $count[]=0; $n=0;

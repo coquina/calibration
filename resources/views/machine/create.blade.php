@@ -1,5 +1,11 @@
 @extends('layouts.default')
 @section('content')
+    <?php
+    use Illuminate\Support\Facades\Auth;
+    $serverName = "calibration.database.windows.net";
+    $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo);
+    ?>
 <style>
     hr {
         border:0; height:2px; background-color:#FFAC12;
@@ -37,9 +43,6 @@
                     <?php
                     date_default_timezone_set('Asia/Taipei');
                     $no_key = date ("mhsd");
-                    $serverName = "163.17.9.113";
-                    $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
-                    $conn = sqlsrv_connect( $serverName, $connectionInfo);
                     $sql="select*from DB_Member";
                     $result=sqlsrv_query($conn,$sql)or die("sql error".sqlsrv_errors());
                     $x=0;	$array[][]=0;$n=0;

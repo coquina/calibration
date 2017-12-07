@@ -1,7 +1,12 @@
 @extends('layouts.default')
 
 @section('content')
-
+    <?php
+    use Illuminate\Support\Facades\Auth;
+    $serverName = "calibration.database.windows.net";
+    $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo);
+    ?>
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -50,9 +55,6 @@
             <div class="form-group">
                 <strong>建立者:</strong>
                 <?php
-                $serverName = "163.17.9.113\SQLEXPRESS";
-                $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
-                $conn = sqlsrv_connect( $serverName, $connectionInfo);
                 $sql="select member_name from DB_Member where id='".$minors->Create_id."'";
 
                 $result=sqlsrv_query($conn,$sql)or die("sql error".sqlsrv_errors());

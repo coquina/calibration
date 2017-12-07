@@ -17,8 +17,8 @@ class homecontroller extends Controller
 {
     public function index()
     {
-        $serverName = "163.17.9.113";
-        $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
+        $serverName = "calibration.database.windows.net";
+        $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
         $conn = sqlsrv_connect( $serverName, $connectionInfo);
         $m_count_sql="select count(b.Test_result_status) 
 from DB_Machinelist a,DB_Schedule b,DB_Machine c

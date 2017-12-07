@@ -1,7 +1,11 @@
 @extends('layouts.default')
 @section('content')
-    <?php use Illuminate\Support\Facades\Auth; ?>
-
+    <?php
+    use Illuminate\Support\Facades\Auth;
+    $serverName = "calibration.database.windows.net";
+    $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo);
+    ?>
     <script LANGUAGE="JavaScript">
         function add_new_data(){
             var num = document.getElementById("result_tb").rows.length;
@@ -48,9 +52,6 @@
             <strong><font color="#FF0000">* </font>排程編號:</strong>
             <select name="Schedule_id" id="Schedule_id" class="form-control">
                 <?php
-                $serverName = "163.17.9.113\SQLEXPRESS";
-                $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
-                $conn = sqlsrv_connect( $serverName, $connectionInfo);
                 $sql="select*from DB_Schedule";
                 $result=sqlsrv_query($conn,$sql)or die("sql error".sqlsrv_errors());
                 $x=0;	$array[][]=0;$n=0;

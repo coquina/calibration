@@ -19,6 +19,12 @@
             color: #ffffff;
         }
     </style>
+    <?php
+    use Illuminate\Support\Facades\Auth;
+    $serverName = "calibration.database.windows.net";
+    $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo);
+    ?>
     <div class="row">
         <div class="col-md-12">
             <h1><a href="{{ route('Parameter.index') }}"><font color="gray">參數管理</font></a></h1>
@@ -26,10 +32,6 @@
         </div>
     </div>
     <?php
-    use Illuminate\Support\Facades\Auth;
-    $serverName = "163.17.9.113";
-    $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
-    $conn = sqlsrv_connect( $serverName, $connectionInfo);
     $sql="select*from DB_Group_personnel where Group_id=1 and id=".Auth::user()->id;
     $result=sqlsrv_query($conn,$sql)or die("sql error".sqlsrv_errors());
     $key=0;

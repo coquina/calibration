@@ -10,8 +10,8 @@ class reportcontroller extends Controller
 {
     public function index(Request $request)
     {
-    $serverName = "163.17.9.113";
-    $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
+        $serverName = "calibration.database.windows.net";
+        $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
     $conn = sqlsrv_connect( $serverName, $connectionInfo);
     $sql_count="select id,Member_name from DB_Member";
     $result=sqlsrv_query($conn,$sql_count)or die("sql error".sqlsrv_errors());

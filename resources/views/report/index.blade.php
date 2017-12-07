@@ -19,6 +19,7 @@
         /*color: white;*/
     }
 </style>
+
 <body>
         {{--<h1><a href="{{ route('report.index') }}"><font color="gray">報表管理</font></a></h1>--}}
         {{--<hr>--}}
@@ -26,8 +27,9 @@
 $select = \Request::get('tag_machine_1','xxx');
 $cho_o = \Request::get('tag_machine_2','xxx');
 $cho_input = \Request::get('search','xxx');
-$serverName = "163.17.9.113";
-$connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
+use Illuminate\Support\Facades\Auth;
+$serverName = "calibration.database.windows.net";
+$connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
 $conn = sqlsrv_connect( $serverName, $connectionInfo);
 $sql_m="select DISTINCT  b.Machine_id, c.Machine_name
 from DB_Schedule a,DB_Machinelist b ,DB_Machine c

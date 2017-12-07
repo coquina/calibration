@@ -4,6 +4,10 @@
 
     <?php
     use App\machine;
+    use Illuminate\Support\Facades\Auth;
+    $serverName = "calibration.database.windows.net";
+    $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo);
     ?>
     <style>
         table#machine_repair_tb tr:nth-child(even) {
@@ -148,9 +152,6 @@
                 <td><center>{{$Machine->Remark}}</center></td>
                 <td><center>{{date('Y-m-d',strtotime($Machine->Create_time))}}</center></td>
                 <td><center><?php
-                        $serverName = "163.17.9.113\SQLEXPRESS";
-                        $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
-                        $conn = sqlsrv_connect( $serverName, $connectionInfo);
                         $sql="select Member_name from DB_Member where id=".$Machine->Create_Id;
                         $result=sqlsrv_query($conn,$sql)or die("sql error".sqlsrv_errors());
                         while($row=sqlsrv_fetch_array($result)){

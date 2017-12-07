@@ -1,9 +1,9 @@
 @extends('layouts.default')
 @section('content')
-    <?php use Illuminate\Support\Facades\Auth;
-    $user=Auth::user()->id;
-    $serverName = "163.17.9.113\SQLEXPRESS";
-    $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
+    <?php
+    use Illuminate\Support\Facades\Auth;
+    $serverName = "calibration.database.windows.net";
+    $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
     $conn = sqlsrv_connect( $serverName, $connectionInfo);
     $sql="select Group_id from DB_Group_personnel where id=".$user;
     $result=sqlsrv_query($conn,$sql)or die("sql error".sqlsrv_errors());

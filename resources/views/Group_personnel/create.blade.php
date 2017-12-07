@@ -1,9 +1,10 @@
 @extends('layouts.default')
 @section('content')
     <?php use Illuminate\Support\Facades\Auth;
-
+    $serverName = "calibration.database.windows.net";
+    $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo);
     ?>
-
 
     <SCRIPT LANGUAGE="JavaScript" >
 
@@ -33,9 +34,6 @@
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
                 <?php
-                $serverName = "163.17.9.113\SQLEXPRESS";
-                $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
-                $conn = sqlsrv_connect( $serverName, $connectionInfo);
                 $check = \Request::get('chk','');
                 date_default_timezone_set('Asia/Taipei');
                 $datetime = date ("Y-m-d H:i:s");
@@ -100,9 +98,6 @@
 
 
             <?php
-            $serverName = "163.17.9.113\SQLEXPRESS";
-            $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
-            $conn = sqlsrv_connect( $serverName, $connectionInfo);
             $t_p = \Request::get('tag_group_personnel','id');
             $search_p = \Request::get('search','');
             $sql_acc="select*from DB_Group_personnel";
@@ -133,9 +128,6 @@
             </tr>
 
             <?php
-            $serverName = "163.17.9.113\SQLEXPRESS";
-            $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
-            $conn = sqlsrv_connect( $serverName, $connectionInfo);
             $t_p = \Request::get('tag_group_personnel','id');
             $search_p = \Request::get('search','');
             $sql="select*from DB_Member";

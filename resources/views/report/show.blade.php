@@ -19,6 +19,12 @@
             color: #ffffff;
         }
     </style>
+    <?php
+    use Illuminate\Support\Facades\Auth;
+    $serverName = "calibration.database.windows.net";
+    $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo);
+    ?>
     <div class="row">
         <div class="col-md-20">
             <h2><a href="{{ route('report.index') }}"><font color="gray">報表管理&nbsp;</font></a><font color="gray" size="5"><span class="glyphicon glyphicon-menu-right"></span></font><font color="black">&nbsp;機器生命週期</font></h2>
@@ -39,9 +45,6 @@
                     <th  width="100"><center><font color="white">狀態</font></center></th>
                 </tr>
                 <?php
-                $serverName = "163.17.9.113";
-                $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
-                $conn = sqlsrv_connect( $serverName, $connectionInfo);
                 if(($_GET['search'] == '內校') or ($_GET['search']=='外校')){
                     $sql="select a.Machine_No,c.Project_name,a.Machine_name,d.Next_calibration_date,c.Check_method,c.Cycle,d.Test_result_status
 from DB_Machine a,DB_Machinelist b,DB_Project c,DB_Schedule d

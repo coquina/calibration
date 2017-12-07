@@ -1,5 +1,11 @@
 @extends('layouts.default')
 @section('content')
+    <?php
+    use Illuminate\Support\Facades\Auth;
+    $serverName = "calibration.database.windows.net";
+    $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo);
+    ?>
     <style>
         table#cho_tb tr:nth-child(even) {
             background-color: #eee;
@@ -19,9 +25,6 @@
     </div>
 
 <?php
-    $serverName = "163.17.9.113";
-    $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
-    $conn = sqlsrv_connect( $serverName, $connectionInfo);
     $s = \Request::get('p_id');
     ?>
 

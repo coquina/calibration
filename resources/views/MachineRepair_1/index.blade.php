@@ -20,7 +20,12 @@
             color: #ffffff;
         }
     </style>
-
+    <?php
+    use Illuminate\Support\Facades\Auth;
+    $serverName = "calibration.database.windows.net";
+    $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo);
+    ?>
     {{--JavaScript--}}
     <SCRIPT LANGUAGE="JavaScript">
 
@@ -115,9 +120,6 @@
                         <td><CENTER>{{$machine->Machine_id}}<CENTER></td>
                         <?php
                         $n=$machine->id;
-                        $serverName = "163.17.9.113\SQLEXPRESS";
-                        $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
-                        $conn = sqlsrv_connect( $serverName, $connectionInfo);
                         $sql="select*from DB_Member where id='".$n."'";
                         $result=sqlsrv_query($conn,$sql)or die("sql error".sqlsrv_errors());
                         $x=0;	$array[]=0;

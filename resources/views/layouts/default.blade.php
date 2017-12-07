@@ -49,8 +49,8 @@
     <?php
     use Illuminate\Support\Facades\Auth;
     $user=Auth::user()->id;     //
-    $serverName = "163.17.9.113";
-    $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
+    $serverName = "calibration.database.windows.net";
+    $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
     $conn = sqlsrv_connect( $serverName, $connectionInfo);
     // 登入資料庫
     // (1) 先抓出登入者所屬 Group ID => 放在 $array_gp[0]

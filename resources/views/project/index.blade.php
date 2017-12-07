@@ -1,8 +1,9 @@
 @extends('layouts.default')
 @section('content')
     <?php
-    $serverName = "163.17.9.113";
-    $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
+    use Illuminate\Support\Facades\Auth;
+    $serverName = "calibration.database.windows.net";
+    $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
     $conn = sqlsrv_connect( $serverName, $connectionInfo);
     $sql_m="select DISTINCT  b.Machine_id, c.Machine_name
 from DB_Schedule a,DB_Machinelist b ,DB_Machine c

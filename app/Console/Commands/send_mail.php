@@ -43,8 +43,8 @@ class send_mail extends Command
     public function handle()
     {
         \Log::info('*****預警排程開始*****');
-        $serverName = "163.17.9.113";
-        $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
+        $serverName = "calibration.database.windows.net";
+        $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
         $conn = sqlsrv_connect( $serverName, $connectionInfo);
         $sql_get_chk="select a.Next_calibration_date,d.email,a.Schedule_id 
 from DB_Schedule a,DB_Machinelist b,DB_Machine c,DB_Member d

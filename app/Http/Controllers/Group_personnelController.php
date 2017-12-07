@@ -112,8 +112,8 @@ class Group_personnelController extends Controller
      */
     public function destroy($id)
     {
-        $serverName = "163.17.9.113\SQLEXPRESS";
-        $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
+        $serverName = "calibration.database.windows.net";
+        $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
         $conn = sqlsrv_connect( $serverName, $connectionInfo);
         $sql="select Group_id from DB_Group_personnel where Group_personnel_id=".$id;
         $del_chk[]=0;

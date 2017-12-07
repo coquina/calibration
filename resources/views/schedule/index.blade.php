@@ -1,6 +1,11 @@
 @extends('layouts.default')
 @section('content')
-
+    <?php
+    use Illuminate\Support\Facades\Auth;
+    $serverName = "calibration.database.windows.net";
+    $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo);
+    ?>
     <style>
         table#sc_tb tr:nth-child(even) {
             background-color: #eee;
@@ -100,9 +105,6 @@
                     <tr>
                         <td><CENTER>{{$schedule->Schedule_id}}</CENTER></td>
                         <td><CENTER><?php
-                                $serverName = "163.17.9.113";
-                                $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
-                                $conn = sqlsrv_connect( $serverName, $connectionInfo);
                                 $sql_find_m="select*from DB_Machinelist where Machine_list_id=".$schedule->Machine_list_id;
                                 $result=sqlsrv_query($conn,$sql_find_m)or die("sql error".sqlsrv_errors());
                                 $array_find_m[]=0;

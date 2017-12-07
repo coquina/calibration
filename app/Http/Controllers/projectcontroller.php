@@ -15,8 +15,8 @@ class projectcontroller extends Controller
         $search = \Request::get('search');
         $tag_project = \Request::get('tag_project','Project_id');
         if($tag_project=='Standard_name'){
-            $serverName = "163.17.9.113\SQLEXPRESS";
-            $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
+            $serverName = "calibration.database.windows.net";
+            $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
             $conn = sqlsrv_connect( $serverName, $connectionInfo);
             $sql="select*from DB_Standard where Standard_name='".$search."'";
             $result=sqlsrv_query($conn,$sql)or die("sql error".sqlsrv_errors());
@@ -101,8 +101,8 @@ class projectcontroller extends Controller
      */
     public function destroy($id)
     {
-        $serverName = "163.17.9.113\SQLEXPRESS";
-        $connectionInfo = array( "Database"=>"cc", "UID"=>"sa", "PWD"=>"s10314161", "CharacterSet"=>"UTF-8");
+        $serverName = "calibration.database.windows.net";
+        $connectionInfo = array( "Database"=>"calibration", "UID"=>"en", "PWD"=>"@sS10314161", "CharacterSet"=>"UTF-8");
         $conn = sqlsrv_connect( $serverName, $connectionInfo);
         $sql_p="select*from DB_Machinelist where Project_id=".$id;
         $result=sqlsrv_query($conn,$sql_p)or die("sql error".sqlsrv_errors());
